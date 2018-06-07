@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.ExcelMapper">
+    <resultMap id="BaseResultMap" type="com.example.demo.bean.Hero">
+        <id column="id" jdbcType="VARCHAR" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="sex" jdbcType="VARCHAR" property="sex" />
+        <result column="number" jdbcType="VARCHAR" property="number" />
+        <result column="type" jdbcType="VARCHAR" property="type" />
+        <result column="ningCheng" jdbcType="VARCHAR" property="ningCheng" />
+        <result column="age" jdbcType="INTEGER" property="age" />
+        <result column="num" jdbcType="VARCHAR" property="num" />
+        <result column="wechatName" jdbcType="VARCHAR" property="wechatName" />
+        <result column="email" jdbcType="VARCHAR" property="email" />
+        <result column="mz" jdbcType="VARCHAR" property="mz" />
+        <result column="company" jdbcType="VARCHAR" property="company" />
+        <result column="duty" jdbcType="VARCHAR" property="duty" />
+        <result column="hang" jdbcType="VARCHAR" property="hang" />
+        <result column="nianxian" jdbcType="VARCHAR" property="nianxian" />
+        <result column="zhu" jdbcType="VARCHAR" property="zhu" />
+        <result column="nian" jdbcType="VARCHAR" property="nian" />
+        <result column="gouci" jdbcType="VARCHAR" property="gouci" />
+        <result column="level" jdbcType="VARCHAR" property="level" />
+    </resultMap>
+    <insert id="batchInsert" parameterType="java.util.List">
+        INSERT INTO hero(name,sex,number,type,ningCheng,age,num,wechatName,email,mz,company,duty,hang,nianxian,zhu,nian,gouci,level) VALUES
+        <foreach collection="list" item="item" index="index" open="" separator="," close="">
+            (#{item.name},#{item.sex},#{item.number},#{item.type},#{item.ningCheng},#{item.age},#{item.num},#{item.wechatName},
+            #{item.email},#{item.mz},#{item.company},#{item.duty},#{item.hang},#{item.nianxian},#{item.zhu},#{item.nian},#{item.gouci},#{item.level})
+        </foreach>
+    </insert>
+
+</mapper>
